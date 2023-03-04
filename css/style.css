@@ -1,0 +1,47 @@
+html,body{
+    min-height: 100vh;
+}
+.body{
+    background-color: #E4E5E7;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aside{
+    height: 400px;
+}
+.main{
+    height: 400px;
+}
+.d-flex{
+    display: flex;
+}
+.none{
+    display: none !important;
+}
+.btn-action{
+    border:none;
+}
+
+.empty-list img{
+    display: block;
+    margin: 0 auto;
+}
+
+.empty-list__title{
+    text-align: center;
+}
+.btn-action:hover{
+    background-color: #e0e5ea;
+    opacity: 1;
+}
+.btn-action img{
+    pointer-events: none; /* клик проходит сквозь img */
+}
+
+.task-title-done{
+    text-decoration: line-through;
+    color: #6dac82;
+}
