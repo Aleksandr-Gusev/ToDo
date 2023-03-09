@@ -22,10 +22,10 @@ mas_task.forEach(function(e){
                         <span class="${cssClass}">${e.text}</span>
                         <div class="task-item__buttons">
                             <button type="button" data-action="done" class="btn-action">
-                                <img src="../img/done.png" alt="done" width="18" height="18">
+                                <img src="./img/done.png" alt="done" width="18" height="18">
                             </button>
                             <button type="button" data-action="delete" class="btn-action">
-                                <img src="../img/del.png" alt="done" width="18" height="18">
+                                <img src="./img/del.png" alt="done" width="18" height="18">
                             </button>
                         </div>
                     </li>`;
@@ -75,10 +75,10 @@ function addTask(e){
                         <span class="${cssClass}">${newTask.text}</span>
                         <div class="task-item__buttons">
                             <button type="button" data-action="done" class="btn-action">
-                                <img src="../img/done.png" alt="done" width="18" height="18">
+                                <img src="./img/done.png" alt="done" width="18" height="18">
                             </button>
                             <button type="button" data-action="delete" class="btn-action">
-                                <img src="../img/del.png" alt="done" width="18" height="18">
+                                <img src="./img/del.png" alt="done" width="18" height="18">
                             </button>
                         </div>
                     </li>`;
@@ -157,7 +157,7 @@ function doneTask(e){
 function checkEmptyList(){
     if (mas_task.length == 0){
         const emptyListHTML = `<li id="emptyList" class="list-group-item empty-list">
-        <img src="../img/green.jpeg" alt="empty" width="48" class="mt-3">
+        <img src="./img/green.jpeg" alt="empty" width="48" class="mt-3">
         <div class="empty-list__title">Список дел пуст</div>
     </li>`;
     tasksList.insertAdjacentHTML("afterbegin", emptyListHTML);
