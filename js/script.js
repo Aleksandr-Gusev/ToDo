@@ -6,6 +6,34 @@ const emptyList = document.querySelector('#emptyList');
 const li_length = document.querySelectorAll('.btn-action')
 
 let mas_task = [];
+
+//проверяем пусто ли в хранилище
+if (localStorage.getItem('tasks')){
+    mas_task = JSON.parse(localStorage.getItem('tasks'));
+}
+
+// проходим по всем элементам массива и рендерим страницу
+mas_task.forEach(function(e){
+    // для отображения нужного класса, используется тернарный оператор
+    const cssClass = e.done ? "task-title task-title-done" : "task-title";
+     
+    // формирование разметки для новой задачи
+    const taskHTML = `<li id="${e.id}" class="list-group-item d-flex justify-content-between task-item">
+                        <span class="${cssClass}">${e.text}</span>
+                        <div class="task-item__buttons">
+                            <button type="button" data-action="done" class="btn-action">
+                                <img src="/img/done.png" alt="done" width="18" height="18">
+                            </button>
+                            <button type="button" data-action="delete" class="btn-action">
+                                <img src="/img/del.png" alt="done" width="18" height="18">
+                            </button>
+                        </div>
+                    </li>`;
+    
+    // Добавлем разметку на страницу
+    tasksList.insertAdjacentHTML('beforeend', taskHTML);
+})
+
 checkEmptyList();
 
 // добавление задачи
@@ -36,6 +64,8 @@ function addTask(e){
     }
     mas_task.push(newTask);
     
+    //добавляем данные в хранилище данных браузера
+    saveToLocalStorage();
 
     // для отображения нужного класса, используется тернарный оператор
     const cssClass = newTask.done ? "task-title task-title-done" : "task-title";
@@ -85,6 +115,8 @@ function deleteTask(e){
         mas_task.splice(index, 1);                              // удаление 1 элемента начиная с index
         console.log(mas_task);
 
+        //добавляем данные в хранилище данных браузера
+        saveToLocalStorage();
         //удаляем задачу
         parentNode.remove();
 
@@ -116,7 +148,8 @@ function doneTask(e){
         })
 
         task.done = !task.done;
-        console.log(task);
+        //добавляем данные в хранилище данных браузера
+        saveToLocalStorage();
     }   
 
 }
@@ -133,4 +166,8 @@ function checkEmptyList(){
         const emptyElem = document.querySelector('#emptyList');
         emptyElem ? emptyElem.remove() : null;
     }
+}
+
+function saveToLocalStorage(){
+    localStorage.setItem('tasks', JSON.stringify(mas_task));
 }
